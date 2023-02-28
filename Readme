@@ -10,11 +10,13 @@ e.g CMD ['php','example.php']
 Here i demonstrate how to bring in the environment variables that are defined in the docker-compose file under the environment section of the firstphp service.
 
 **ngnix**
-Our nginx server is defined to listen from port 1090
 This is going to work as our web server.
+
+Our nginx server is defined to listen from port 1090
+
 You may not need to touch the Dockerfile. But if you want to configure ssl. Uncomment the commented out lines and replacing "your.cert.***" with the names of your cert files.
 
-Then in the nginx.conf. put your configurations nginx here.
+Then in the nginx.conf. put your nginx configurations.
 For details on how to configure nginx as a webserver, follow this link https://docs.nginx.com/nginx/admin-guide/web-server/web-server/
 
 here we also tell the nginx server to pass on all the received request to our apache server running on port 80. we reference the apache server by stating the name of the container under which it is running. "firstphp" is this instance. 
@@ -27,18 +29,17 @@ Here i demonstrate how to define the environment variables.
 
 **docker compose**
 This is the last part. the *juice*!. Were all the magic happens. 
-Its shows you how to bring in the environment variables you set in the .env file under the environment section of the "firstphp" service
+It shows you how to bring in the environment variables you set in the .env file under the environment section of the "firstphp" service
 
-under the nginx service. 
-the depends_on section tells docker not to run the nginx container until the "firstphp" container has started.
+under the nginx service,the depends_on section tells docker not to run the nginx container until the "firstphp" container has started.
 
 finally we tell docker to open port 1090 on the host and pass all the requests received to the nginx service on port 1090
 
 *Thats all*
 
-run docker compose up --build -d.
+run docker compose up --build -d
 
-your applicaiton can should be running on
+your applicaiton should be running on
 http://localhost:1090/firstxapp
 
 "paulkavule"
