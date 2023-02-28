@@ -36,4 +36,9 @@ finally we tell docker to open port 1090 on the host and pass all the requests r
 
 *Thats all*
 
-"paulkavule aka. the juice"
+run docker compose up --build -d.
+
+your applicaiton can should be running on
+http://localhost:1090/firstxapp
+
+"paulkavule"
