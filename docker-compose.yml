@@ -1,0 +1,23 @@
+version: "3.7"
+
+services:
+  firstphp:
+    build: ./app
+    restart: always
+    environment:
+      - DRIVER=${DRIVER}
+    #   - DB_PWORD="${PGWAY_DB_PASSWORD}"
+    expose:
+      - 80
+    ports:
+      - "80"
+  nginx:
+    build: ./nginx
+    container_name: firstphp_server
+    depends_on:
+      - firstphp
+    ports:
+      - "1090:1090"
+      #- "7100:7100"
+
+
